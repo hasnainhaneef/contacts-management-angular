@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="header">
+    <img src="../../../assets/Menu.svg" alt="">
+    <h5>Contacts</h5>
+  </div>
+ 
+  <div class="search-container">
+    <div class="search-bar">
+      <i class="fas fa-search search-icon"></i>
+      <input 
+        type="text" 
+        placeholder="Search contacts..." 
+        [(ngModel)]="searchTerm" 
+        (input)="onSearchChange()"
+        class="search-input"
+      >
+      <button 
+        *ngIf="searchTerm" 
+        (click)="clearSearch()" 
+        class="clear-btn"
+      >
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+  </div>
+
+  <div class="contact-list">
+    <div class="contact-item" *ngFor="let contact of filteredContacts" (click)="selectContact(contact)">
+      <div class="contact-left">
+        <img [src]="contact.avatar" alt="avatar" class="avatar" />
+        <div class="contact-info">
+          <div class="name">{{ contact.firstName }} {{ contact.lastName }}</div>
+          <div class="designation">{{ contact.designation }}</div>
+        </div>
+      </div>
+      <div class="contact-actions">
+        <button class="btn-icon">
+          <i class="fas fa-phone"></i>
+        </button>
+        <button class="btn-icon">
+          <i class="fas fa-message"></i>
+        </button>
+        <button class="btn-icon">
+          <i class="fas fa-ellipsis-h"></i>
+        </button>
+      </div>
+    </div>
+    
+    
+    <div *ngIf="filteredContacts.length === 0 && searchTerm" class="no-results">
+      <i class="fas fa-search"></i>
+      <p>No contacts found for "{{ searchTerm }}"</p>
+    </div>
+  </div>
+</div>

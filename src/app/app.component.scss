@@ -1,0 +1,26 @@
+.app-layout {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 30%;
+  border-right: 1px solid #ddd;
+}
+
+.content {
+  flex: 1;
+}
+
+@media (max-width: 1000px) {
+
+.app-layout{
+  flex-direction: column;
+ 
+
+}
+.sidebar{
+  width: 100%;
+}
+
+}
